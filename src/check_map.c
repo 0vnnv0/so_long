@@ -1,0 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/18 18:03:48 by anschmit          #+#    #+#             */
+/*   Updated: 2024/07/25 12:31:08 by anschmit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../so_long.h"
+
+int	is_valid_char(char c)
+{
+	return (c == '0' || c == '1' || c == 'P' || c == 'E' || c == 'C');
+}
+
+int	count_collectibles(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	map->collectibles = 0;
+	while (i < map->height - 1)
+	{
+		j = 1;
+		while (j < map->width)
+		{
+			if (map->grid[i][j] == 'C')
+				map->collectibles++;
+			else if (!is_valid_char(map->grid[i][j]))
+			{
+				ft_printf("Invalid characters: '%c' (ascii: %d)\n", map->grid[i][j], (int)map->grid[i][j]);
+				return (-1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	count_chars_in_string(const char *str, char c)
+{
+	int	count;
+
+	count = 0;
+	while (*str)
+	{
+		if (*str == c)
+			count++;
+		str++;
+	}
+	return (count);
+}
+
+int	check_chars(t_map *map)
+{
+	int	p;
+	int	e;
+	int	c;
+	int	i;
+
+	p = 0;
+	e = 0;
+	c = 0;
+	i = 0;
+	while (i < map->height - 1)
+	{
+		p += (count_chars_in_string(map->grid[i], 'P'));
+		c += (count_chars_in_string(map->grid[i], 'C'));
+		e += (count_chars_in_string(map->grid[i], 'E'));
+		i++;
+	}
+	if (p != 1 || e != 1 || c < 1)
+		return (-1);
+	return (1);
+}
+
+int	check_walls(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while ((map->grid[0][i] != '\0' && map->grid[0][i] != '\n') || (map->grid[map->height - 1][i] != '\0' && map->grid[map->height - 1][i] != '\n'))
+	{
+		if (map->grid[0][i] != '1' || map->grid[map->height - 1][i] != '1')
+			return (ft_printf("Map is not surrounded by Walls at top/bottom\n"), -1);
+		i++;
+	}
+	i = 0;
+	while (i < map->height)
+	{
+		if (map->grid[i][0] != '1' || map->grid[i][map->width - 1] != '1')
+			return (ft_printf("Map is not surrounded by Walls 2, last c: %c\n", map->grid[i][map->width - 1]), -1);
+		i++;
+	}
+	return (1);
+}
