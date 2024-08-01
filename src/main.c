@@ -6,47 +6,54 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:30:11 by anschmit          #+#    #+#             */
-/*   Updated: 2024/07/25 12:27:16 by anschmit         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:29:37 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	load_textures(t_map *map)
+void	initialize_game(t_map *map)
 {
-
-	map->player_img = mlx_xpm_file_to_image(map->mlx, "./assets/player.xbm", &map->img_width, &map->img_height);
-	map->wall_img = mlx_xpm_file_to_image(map->mlx, "./assets/wall.xbm", &map->img_width, &map->img_height);
-	map->collectibles_img = mlx_xpm_file_to_image(map->mlx, "./assets/collectibles.xbm", &map->img_width, &map->img_height);
-	map->floor_img = mlx_xpm_file_to_image(map->mlx, "./assets/floor.xbm", &map->img_width, &map->img_width);
-	map->exit_img = mlx_xpm_file_to_image(map->mlx, "./assets/exit.xbm", &map->img_width, &map->img_height);
-	if(!map->player_img || !map->wall_img || !map->collectibles_img || !map->floor_img || !map->exit_img)
-		return(perror("Failed to load textures!"), -1);
-	return (1);
+	map->grid = NULL;
+	map->width = 0;
+	map->height = 0;
+	map->player_x = 0;
+	map->player_y = 0;
+	map->exit_x = 0;
+	map->exit_y = 0;
+	map->collectibles = 0;
+	map->flood_collect = 0;
+	map->flood_exit = 0;
+	map->mlx = NULL;
+	map->window = NULL;
+	map->player_img = NULL;
+	map->wall_img = NULL;
+	map->collectibles_img = NULL;
+	map->exit_img = NULL;
+	map->floor_img = NULL;
+	map->enemy_img = NULL;
+	map->img_width = 32;
+	map->img_height = 32;
+	map->player_moves = 0;
+	map->won = 0;
+	map->lost = 0;
+	map->text_height = 0;
+	map->text_width = 0;
 }
 
 int	main(int argc, char **argv)
 {
-	t_map new_map;
+	t_map	new_map;
 
 	if (argc != 2)
 	{
 		ft_printf("Error! Invalid numbers of Arguments. Try again.");
 		return (1);
 	}
-	if(validate_map(argv[1], &new_map) == -1)
-		return(ft_printf("Error! Map is invalid!\n"), 1);
-	new_map.mlx = mlx_init();
-	if (new_map.mlx == NULL)
-	{
-		return(ft_printf("Error! MLX initialization failed!"), 1);
-	}
-	new_map.window = mlx_new_window(new_map.mlx, 600, 400, "so_long");
-	if (new_map.window == NULL)
-	{
-		mlx_destroy_display(new_map.mlx);
-		free(new_map.mlx);
-		return (1);
-	}
+	initialize_game(&new_map);
+	if (validate_map(argv[1], &new_map) == -1)
+		return (ft_printf("Error! Map is invalid!\n"), 1);
+	else
+		window(&new_map);
 	return (0);
 }

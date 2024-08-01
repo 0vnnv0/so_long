@@ -6,7 +6,7 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:01:53 by anschmit          #+#    #+#             */
-/*   Updated: 2024/07/25 12:30:28 by anschmit         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:23:32 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static char	**create_map_copy(t_map *map)
 {
-	char **copy;
-	int	i;
+	char	**copy;
+	int		i;
 
 	i = 0;
 	copy = malloc(sizeof(char *) * map->height);
 	if (!copy)
-		return NULL;
+		return (NULL);
 	while (i < map->height)
 	{
 		copy[i] = strdup(map->grid[i]);
-		if(!copy[i])
+		if (!copy[i])
 		{
 			while (i > 0)
 				free(copy[i--]);
 			free(copy);
-			return NULL;
+			return (NULL);
 		}
 		i++;
 	}
@@ -64,7 +64,7 @@ void	flood_fill(t_map *map, char **map_copy, int x, int y)
 {
 	if (y < 1 || y > map->height || x < 1 || x > map->width \
 		|| map_copy[y][x] == '1' || map_copy[y][x] == 'V')
-			return ;
+		return ;
 	if (map_copy[y][x] == 'C')
 		map->flood_collect += 1;
 	if (map_copy[y][x] == 'E')

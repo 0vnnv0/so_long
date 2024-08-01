@@ -6,7 +6,7 @@
 #    By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/04 12:15:13 by anschmit          #+#    #+#              #
-#    Updated: 2024/07/24 11:28:35 by anschmit         ###   ########.fr        #
+#    Updated: 2024/08/01 17:30:07 by anschmit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -I/home/anschmit/done/libft/includes -I/home/anschmit/minilibx-linux 
 
-SRCS =	$(addprefix src/, main.c read_map.c check_map.c check_access.c positions.c)
+SRCS =	$(addprefix src/, main.c read_map.c check_map.c check_access.c positions.c image.c movement.c end_game.c)
 
 OBJS = $(SRCS:%.c=%.o)
 

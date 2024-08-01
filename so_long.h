@@ -6,7 +6,7 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:47:14 by anschmit          #+#    #+#             */
-/*   Updated: 2024/07/24 11:34:46 by anschmit         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:26:56 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <math.h>
 # include "/home/anschmit/done/libft/includes/libft.h"
 # include "/home/anschmit/done/libft/includes/get_next_line.h"
+# define TILE_SIZE 32
 
 typedef struct s_map
 {
@@ -44,14 +45,17 @@ typedef struct s_map
 	void	*collectibles_img;
 	void	*exit_img;
 	void	*floor_img;
+	void	*enemy_img;
 	int		img_width;
 	int		img_height;
-	int		moves;
-
-} t_map;
+	int		won;
+	int		lost;
+	int		player_moves;
+	int		text_height;
+	int		text_width;
+}	t_map;
 
 int			check_rectangular(t_map *map);
-int			add_line_to_map(t_map *map, char *line);
 int			parse_map(const char *filename, t_map *map);
 int			initialize_map(char *filename, t_map *map);
 int			validate_map(char *filename, t_map *map);
@@ -64,5 +68,18 @@ int			check_chars(t_map *map);
 int			check_walls(t_map *map);
 void		set_positions(t_map *map);
 int			load_textures(t_map *map);
+int			window(t_map *map);
+int			put_image(t_map *map);
+int			put_items(t_map *map, char *row, int i);
+int			key_hook(int keycode, t_map *map);
+void		move_player(int keycode, t_map *map);
+void		render_map(t_map *map);
+int			free_map(t_map *map);
+int			include_count(t_map *map, int position);
+int			close_window(t_map *map);
+int			game_won(t_map *map);
+void		update_collectibles(t_map *map);
+void		display_moves(t_map *map);
+void		fight_enemys(t_map *map);
 
 #endif

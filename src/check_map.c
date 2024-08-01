@@ -6,7 +6,7 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:03:48 by anschmit          #+#    #+#             */
-/*   Updated: 2024/07/25 12:31:08 by anschmit         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:25:50 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	is_valid_char(char c)
 {
-	return (c == '0' || c == '1' || c == 'P' || c == 'E' || c == 'C');
+	return (c == '0' || c == '1' || c == 'P' \
+	|| c == 'E' || c == 'C' || c == 'B');
 }
 
 int	count_collectibles(t_map *map)
@@ -33,7 +34,8 @@ int	count_collectibles(t_map *map)
 				map->collectibles++;
 			else if (!is_valid_char(map->grid[i][j]))
 			{
-				ft_printf("Invalid characters: '%c' (ascii: %d)\n", map->grid[i][j], (int)map->grid[i][j]);
+				ft_printf("Invalid characters: '%c' (ascii: %d)\n", \
+				map->grid[i][j], (int)map->grid[i][j]);
 				return (-1);
 			}
 			j++;
@@ -76,7 +78,9 @@ int	check_chars(t_map *map)
 		i++;
 	}
 	if (p != 1 || e != 1 || c < 1)
+	{
 		return (-1);
+	}
 	return (1);
 }
 
@@ -85,17 +89,19 @@ int	check_walls(t_map *map)
 	int	i;
 
 	i = 0;
-	while ((map->grid[0][i] != '\0' && map->grid[0][i] != '\n') || (map->grid[map->height - 1][i] != '\0' && map->grid[map->height - 1][i] != '\n'))
+	while ((map->grid[0][i] != '\0' && map->grid[0][i] != '\n') \
+	|| (map->grid[map->height - 1][i] != '\0' \
+	&& map->grid[map->height - 1][i] != '\n'))
 	{
 		if (map->grid[0][i] != '1' || map->grid[map->height - 1][i] != '1')
-			return (ft_printf("Map is not surrounded by Walls at top/bottom\n"), -1);
+			return (ft_printf("Map is not surrounded by Walls at t/b\n"), -1);
 		i++;
 	}
 	i = 0;
 	while (i < map->height)
 	{
 		if (map->grid[i][0] != '1' || map->grid[i][map->width - 1] != '1')
-			return (ft_printf("Map is not surrounded by Walls 2, last c: %c\n", map->grid[i][map->width - 1]), -1);
+			return (ft_printf("Map is not surrounded by Walls l/r\n"), -1);
 		i++;
 	}
 	return (1);

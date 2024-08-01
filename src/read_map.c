@@ -6,7 +6,7 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:25:24 by anschmit          #+#    #+#             */
-/*   Updated: 2024/07/25 12:31:36 by anschmit         ###   ########.fr       */
+/*   Updated: 2024/08/01 11:31:11 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int	check_rectangular(t_map *map)
 {
-	int i;
-	int j;
-	int len;
+	int	i;
+	int	j;
+	int	len;
 
-	i = 1;
-	j = 0;
+	i = 0;
 	len = 0;
-	while (map->grid[0][len] != '\n' && map->grid[0][len] != '0')
+	while (map->grid[0][len] != '\n' && map->grid[0][len] != '\0')
 		len++;
 	while (i < map->height)
-	{		
-			while (map->grid[i][j] != '\n' && map->grid[i][j] != '\0')
-				j++;
-			i++;
-			if (j != len)
-				return (-1);
+	{
+		j = 0;
+		while (map->grid[i][j] != '\n' && map->grid[i][j] != '\0')
+			j++;
+		if (j != len)
+			return (-1);
+		i++;
 	}
 	return (1);
 }
@@ -38,7 +38,6 @@ int	parse_map(const char *filename, t_map *map)
 {
 	int	fd;
 	int	i;
-	int	j = 0;
 
 	fd = open(filename, O_RDONLY);
 	i = 0;
@@ -47,15 +46,15 @@ int	parse_map(const char *filename, t_map *map)
 	while (i < map->height)
 	{
 		map->grid[i] = get_next_line(fd);
-		if(!map->grid[i])
+		if (!map->grid[i])
 		{
 			close (fd);
 			return (-1);
 		}
 		i++;
-		j++;
 	}
 	map->grid[i] = NULL;
+	map->grid[i + 1] = NULL;
 	close(fd);
 	return (1);
 }
@@ -71,7 +70,7 @@ int	initialize_map(char *filename, t_map *map)
 		return (ft_printf("Error: Could not open file %s\n"), -1);
 	line = get_next_line(fd);
 	if (!line)
-		return(close(fd), -1);
+		return (close(fd), -1);
 	while (line != NULL)
 	{
 		if (map->height == 0)
@@ -85,22 +84,22 @@ int	initialize_map(char *filename, t_map *map)
 }
 
 int	validate_map(char *filename, t_map *map)
-{	
+{
 	if (initialize_map(filename, map) == -1)
-		return(ft_printf("Error! No map found!"));
-	map->grid = malloc(sizeof(char *) * (map->height + 1));
+		return (ft_printf("Error! No map found!\n"), -1);
+	map->grid = malloc(sizeof(char *) * (map->height + 2));
 	if (!map->grid)
 		return (ft_printf("Error! Memory allocation failed!"), -1);
 	if (parse_map(filename, map) == -1)
-		return(ft_printf("Error! Invalid map! \n"), -1);
-	if(check_rectangular(map) == -1)
+		return (ft_printf("Error! Invalid map! \n"), -1);
+	if (check_rectangular(map) == -1)
 		return (ft_printf("Error: Map is not rectangular!\n"), -1);
-	if(count_collectibles(map) <= 0)
-		return (ft_printf("Error: not enough collectibles!\n", -1));
-	if(check_chars(map) == -1)
-		return (ft_printf("Error: wrong characters!\n", -1));
+	if (count_collectibles(map) <= 0)
+		return (ft_printf("Error: wrong characters!\n"), -1);
+	if (check_chars(map) == -1)
+		return (ft_printf("Error: not enough or too many!\n"), -1);
 	if (check_walls(map) == -1)
-		return (ft_printf("Error: problem with the walls!\n"-1));
+		return (ft_printf("Error: problem with the walls!\n"), -1);
 	if (check_path(map) == -1)
 		return (ft_printf("Error: Player can't move correctly\n"), -1);
 	return (1);
