@@ -6,7 +6,7 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 18:03:48 by anschmit          #+#    #+#             */
-/*   Updated: 2024/08/01 17:25:50 by anschmit         ###   ########.fr       */
+/*   Updated: 2024/08/04 14:31:12 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,19 @@ int	count_collectibles(t_map *map)
 
 	i = 1;
 	map->collectibles = 0;
-	while (i < map->height - 1)
+	while (i < map->height)
 	{
 		j = 1;
 		while (j < map->width)
 		{
 			if (map->grid[i][j] == 'C')
 				map->collectibles++;
-			else if (!is_valid_char(map->grid[i][j]))
-			{
-				ft_printf("Invalid characters: '%c' (ascii: %d)\n", \
-				map->grid[i][j], (int)map->grid[i][j]);
-				return (-1);
-			}
 			j++;
 		}
 		i++;
 	}
+	if (map->collectibles < 1)
+		return (-1);
 	return (1);
 }
 
@@ -63,24 +59,27 @@ int	check_chars(t_map *map)
 {
 	int	p;
 	int	e;
-	int	c;
 	int	i;
+	int	j;
 
 	p = 0;
 	e = 0;
-	c = 0;
 	i = 0;
-	while (i < map->height - 1)
+	while (i < map->height)
 	{
+		j = 0;
 		p += (count_chars_in_string(map->grid[i], 'P'));
-		c += (count_chars_in_string(map->grid[i], 'C'));
 		e += (count_chars_in_string(map->grid[i], 'E'));
+		while (j < map->width)
+		{
+			if (!is_valid_char(map->grid[i][j]))
+				return (-1);
+			j++;
+		}
 		i++;
 	}
-	if (p != 1 || e != 1 || c < 1)
-	{
+	if (p != 1 || e != 1)
 		return (-1);
-	}
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 13:44:45 by anschmit          #+#    #+#             */
-/*   Updated: 2024/08/01 17:41:38 by anschmit         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:27:06 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,15 @@ int	put_image(t_map *map)
 	if (map->won != 1 && map->lost != 1)
 		display_moves(map);
 	if (map->won == 1)
+	{
 		mlx_string_put(map->mlx, map->window, map->text_width, \
 		map->text_height, 0xFF69B4, "Congrats! You won!");
+	}
 	if (map->lost == 1)
+	{
 		mlx_string_put(map->mlx, map->window, map->text_width, \
 		map->text_height, 0xFF69B4, "you lost! :(");
+	}
 	return (0);
 }
 

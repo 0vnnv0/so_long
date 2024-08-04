@@ -6,7 +6,7 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 16:25:24 by anschmit          #+#    #+#             */
-/*   Updated: 2024/08/01 11:31:11 by anschmit         ###   ########.fr       */
+/*   Updated: 2024/08/04 14:24:56 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ int	validate_map(char *filename, t_map *map)
 		return (ft_printf("Error! Invalid map! \n"), -1);
 	if (check_rectangular(map) == -1)
 		return (ft_printf("Error: Map is not rectangular!\n"), -1);
-	if (count_collectibles(map) <= 0)
-		return (ft_printf("Error: wrong characters!\n"), -1);
 	if (check_chars(map) == -1)
+		return (ft_printf("Error: wrong char or E or P missing!\n"), -1);
+	if (count_collectibles(map) <= 0)
 		return (ft_printf("Error: not enough or too many!\n"), -1);
 	if (check_walls(map) == -1)
 		return (ft_printf("Error: problem with the walls!\n"), -1);
