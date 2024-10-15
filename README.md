@@ -20,9 +20,9 @@ program in a clean way.
 • The use of the images of the MiniLibX is mandatory.
 
 ## Map
-*• The map has to be constructed with 3 components: walls, collectibles, and free
-space.
-*• The map can be composed of only these 5 characters:
+• The map has to be constructed with 3 components: walls, collectibles, and free
+space. \n
+• The map can be composed of only these 5 characters: \n
     0 for an empty space,
     1 for a wall,
     C for a collectible,
