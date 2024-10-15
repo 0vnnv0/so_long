@@ -1,1 +1,1 @@
-A basic 2D game in which a rock escapes Earth after eating some watermelons, trying not to touch the bombs, as it will die.
+A 2D game where a character must collect all the collectibles and escape the map. The game uses the MiniLibX library for graphics.
