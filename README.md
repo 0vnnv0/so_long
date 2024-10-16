@@ -23,7 +23,7 @@ program in a clean way. <br/>
 • The map has to be constructed with 3 components: walls, collectibles, and free
 space. <br/>
 • The map can be composed of only these 5 characters: <br/>
-    0 for an empty space, <br/>
+&emsp; 0 for an empty space, <br/>
     1 for a wall, <br/>
     C for a collectible, <br/>
     E for a map exit, <br/>
