@@ -23,11 +23,11 @@ program in a clean way. <br/>
 • The map has to be constructed with 3 components: walls, collectibles, and free
 space. <br/>
 • The map can be composed of only these 5 characters: <br/>
-&emsp; 0 for an empty space, <br/>
-    1 for a wall, <br/>
-    C for a collectible, <br/>
-    E for a map exit, <br/>
-    P for the player’s starting position <br/>
+&emsp; &emsp; 0 for an empty space, <br/>
+&emsp; &emsp; 1 for a wall, <br/>
+&emsp; &emsp; C for a collectible, <br/>
+&emsp; &emsp; E for a map exit, <br/>
+&emsp; &emsp; P for the player’s starting position <br/>
 • The map must contain 1 exit, at least 1 collectible, and 1 starting position to
 be valid. <br/>
 The map must be rectangular. <br/>
