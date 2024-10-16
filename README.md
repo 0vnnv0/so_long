@@ -1,7 +1,7 @@
 # so_long
 A 2D game where a character must collect all the collectibles and escape the map. The game uses the MiniLibX library for graphics.
 
-##🎮 Description
+## 🎮 Description
 • The player’s goal is to collect every collectible present on the map, then escape
 chosing the shortest possible route. <br/> 
 • The W, A, S, and D keys must be used to move the main character. <br/>
@@ -11,7 +11,7 @@ chosing the shortest possible route. <br/>
 • You have to use a 2D view (top-down or profile). <br/>
 • The game doesn’t have to be real time. <br/>
 
-##🎨 Graphic management
+## 🎨 Graphic management
 • Your program has to display the image in a window. <br/>
 • The management of your window must remain smooth (changing to another window, minimizing, and so forth). <br/>
 • Pressing ESC must close the window and quit the program in a clean way. <br/>
@@ -19,7 +19,7 @@ chosing the shortest possible route. <br/>
 program in a clean way. <br/>
 • The use of the images of the MiniLibX is mandatory. <br/>
 
-##🗺️ Map
+## 🗺️ Map
 • The map has to be constructed with 3 components: walls, collectibles, and free
 space. <br/>
 • The map can be composed of only these 5 characters: <br/>
