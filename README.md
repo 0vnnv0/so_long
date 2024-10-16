@@ -11,7 +11,7 @@ chosing the shortest possible route. <br/>
 • You have to use a 2D view (top-down or profile). <br/>
 • The game doesn’t have to be real time. <br/>
 
-## 🎨 Graphic management
+## 🎨 !Graphic management!
 • Your program has to display the image in a window. <br/>
 • The management of your window must remain smooth (changing to another window, minimizing, and so forth). <br/>
 • Pressing ESC must close the window and quit the program in a clean way. <br/>
