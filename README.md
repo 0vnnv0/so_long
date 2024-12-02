@@ -9,7 +9,7 @@ Create a basic 2D game in which a dolphin escapes Earth after eating some fish. 
 
 ### 🗺️ Map
 
-### ▶️ How to play
+## ▶️ How to play
 
 • To compile the game, navigate to the files/ directory and run the following command: <br/>
 &emsp; make<br/>
