@@ -15,6 +15,5 @@ Create a basic 2D game in which a dolphin escapes Earth after eating some fish. 
 &emsp; make<br/>
 • This will generate an executable named so_long. <br/>
 • To launch the game, use the following command: <br/>
-
-./so_long maps/huge.ber <br/>
+&emsp; ./so_long maps/huge.ber <br/>
 • huge.ber is a map description file in the format *.ber.
