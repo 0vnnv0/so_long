@@ -1,15 +1,15 @@
 # so_long
 
-## Description
+## Description 📖
 Create a basic 2D game in which a dolphin escapes Earth after eating some fish. Instead of a dolphin, fish, and the Earth, you can use any character, any collectible, and any place you want. The project must comply with the following rules:
 
-### Game
+### Game 🎲
 
-### Graphic Management
+### Graphic Management 🎨
 
-### Map
+### Map 🗺️ 
 
-### How to play
+### How to play 🎮
 
 To compile the game, navigate to the files/ directory and run the following command: <br/>
 &emsp; make<br/>
