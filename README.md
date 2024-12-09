@@ -12,13 +12,12 @@ Create a basic 2D game in which a dolphin escapes Earth after eating some fish. 
 ## ▶️ How to play
 
 • To compile the game, navigate to the files/ directory and run the following command: <br/>
-
 ```markdown
-&emsp; make<br/>
-
+make
+```
 • This will generate an executable named so_long. <br/>
 • To launch the game, use the following command: <br/>
 ```bash
-&emsp; ./so_long maps/huge.ber <br/>
-
+./so_long maps/huge.ber
+```
 • huge.ber is a map description file in the format *.ber.
