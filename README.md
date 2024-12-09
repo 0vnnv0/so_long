@@ -1,5 +1,3 @@
-# so_long
-
 &emsp; ![image](https://github.com/user-attachments/assets/16649219-f172-4511-b2f6-0e9da2418a37)
 
 ## 📖 Description
