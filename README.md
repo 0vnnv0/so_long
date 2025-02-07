@@ -7,7 +7,28 @@ Create a basic 2D game in which a dolphin escapes Earth after eating some fish. 
 
 ### 🎨 Graphic Management
 
+- Your program has to display the image in a window.
+- The management of your window must remain smooth (changing to another window, minimizing, and so forth).
+- Pressing ESC must close the window and quit the program in a clean way.
+- Clicking on the cross on the window’s frame must close the window and quit the program in a clean way.
+- The use of the images of the MiniLibX is mandatory.
+
 ### 🗺️ Map
+
+- The map has to be constructed with 3 components: walls, collectibles, and free space.
+- The map can be composed of only these 5 characters:
+&emsp; - 0 for an empty space,
+&emsp; - 1 for a wall,
+&emsp; - C for a collectible,
+&emsp; - E for a map exit,
+&emsp; - P for the player’s starting position.
+- The map must contain at least 1 exit, 1 collectible, and 1 starting position.
+- The map must contain only 1 starting position and 1 exit.
+- The map must be rectangular.
+- The map must be closed/surrounded by walls. If it’s not, the program must return an error.
+- You don’t have to check if there’s a valid path in the map.
+- You must be able to parse any kind of map, as long as it respects the above rules.
+- If any misconfiguration of any kind is encountered in the file, the program must exit in a clean way, and return "Error\n" followed by an explicit error message of your choice.
 
 ## ▶️ How to play
 
