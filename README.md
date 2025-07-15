@@ -51,3 +51,7 @@ make
 ./so_long maps/huge.ber
 ```
 • huge.ber is a map description file in the format *.ber.
+
+https://github.com/user-attachments/assets/080309df-8198-45ee-a8de-229d29bb1438
+
+
