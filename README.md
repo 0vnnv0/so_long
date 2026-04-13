@@ -52,6 +52,6 @@ make
 ```
 • huge.ber is a map description file in the format *.ber.
 
-https://github.com/user-attachments/assets/080309df-8198-45ee-a8de-229d29bb1438
+[Screencast from 04-13-2026 12:25:32 PM.webm](https://github.com/user-attachments/assets/b58cce8c-7492-4a1f-b984-078af3b34e1a)
 
 
