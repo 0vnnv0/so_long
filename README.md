@@ -55,3 +55,6 @@ make
 [let's_play.webm](https://github.com/user-attachments/assets/995c8623-3179-4ea8-80d6-e94a91849068)
 
 
+---
+
+*Project completed as part of the 42 School curriculum.*
